@@ -1,0 +1,13 @@
+-dce full
+-lib thx.culture
+-lib thx.benchmark
+-lib thx.format
+-cp src
+-main bench.Bench
+--each
+-js bench.js
+--next
+-java benchjava
+--next
+-cs benchcs
+
