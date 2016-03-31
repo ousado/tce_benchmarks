@@ -1,4 +1,4 @@
-# ddlist
+# tce benchmarks
 test/benchmark list implementation for the experimental tce branch
 
 Some results follow (obviously using Franco's https://github.com/fponticelli/thx.benchmark library)
