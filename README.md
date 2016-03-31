@@ -3,6 +3,8 @@ test/benchmark list implementation for the experimental tce branch
 
 Some results follow (obviously using Franco's https://github.com/fponticelli/thx.benchmark library)
 
+The `rlist` functions are using recursion, the `list` functions have their tail calls eliminated, everything else should be identical.
+
 ```
 ################################## 
 JS 
