@@ -27,6 +27,14 @@ class RLists {
         return xs;
     }
     
+    @:analyzer(dot_debug)
+    public static function iter<T>(xs:RList<T>,f:T->Void):Void switch xs {
+        case RNil:
+        case RCons(x,xs):
+            f(x);
+            iter(xs,f);
+    }
+    
     public static function toArray<T>(xs:RList<T>) return _toArray(xs,[]);
     
 

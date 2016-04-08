@@ -44,6 +44,15 @@ class Lists {
     }
     
     @:analyzer(tce_strict)
+    @:analyzer(dot_debug)
+    public static function iter<T>(xs:List<T>,f:T->Void):Void switch xs {
+        case Nil:
+        case Cons(x,xs):
+            f(x);
+            iter(xs,f);
+    }
+    
+    @:analyzer(tce_strict)
     static function _rev<T>(xs:List<T>,acc:List<T>) return switch xs {
         case Nil:        acc;
         case Cons(x,xs): _rev(xs,Cons(x,acc));

@@ -7,6 +7,15 @@
 --each
 -js benchcmp.js
 --next
+-neko bcmp.n
+-cmd echo "neko^"
+--next 
+-python benchcmp.py
+-cmd echo "python^"
+--next
 -java benchcmpjava
+-cmd echo "java^"
 --next
 -cs benchcmpcs
+-cmd echo "cs^"
+
