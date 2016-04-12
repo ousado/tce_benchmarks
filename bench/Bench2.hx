@@ -22,7 +22,7 @@ using ddlist.CList;
 class Bench2 {
     
     static function main(){
-        _main(false);
+        //_main(false);
         _main(true);
     }
     
@@ -31,7 +31,7 @@ class Bench2 {
         #if python untyped PySys.setrecursionlimit(50000); #end
         
         var MAX_T = 200;
-        var MIN_SAMPLES = 50;
+        var MIN_SAMPLES = 20;
         
         var suite = new Suite(MIN_SAMPLES, MAX_T);
         
