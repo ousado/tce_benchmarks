@@ -18,6 +18,18 @@ class RLists {
         return _rev(xs,RNil);
     }
 
+    public static function map_arr<T,U>(xs:RList<T>,f:T->U):RList<U>{
+        var arr:Array<U> = [];
+        function loop(xs:RList<T>,f:T->U):Void switch xs {
+            case RNil:
+            case RCons(x,xs):
+                arr.push(f(x));
+                loop(xs,f);
+        }
+        loop(xs,f);
+        return arr.toRList();
+    }
+
     public static function cons<T>(xs:RList<T>,x:T) return RCons(x,xs);
     
     public static function toRList<T>(arr:Array<T>):RList<T> {

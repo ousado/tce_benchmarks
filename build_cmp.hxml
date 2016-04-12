@@ -6,6 +6,7 @@
 -main bench.Bench2
 --each
 -js benchcmp.js
+-cmd echo "js^"
 --next
 -neko bcmp.n
 -cmd echo "neko^"
@@ -16,6 +17,14 @@
 -java benchcmpjava
 -cmd echo "java^"
 --next
+-D erase_generics
 -cs benchcmpcs
 -cmd echo "cs^"
+--next
+-cpp benchcmpcpp
+-cmd echo "cpp^"
+--next
+-lua benchcmp.lua
+-cmd echo "lua^"
+
 

@@ -40,9 +40,17 @@ class CList<T> {
         return r.map_reverse(f);
     }
     
+    @:analyzer(tce_local)
     public function map_arr<U>(f:T->U):CList<U>{
-        var arr = [];
-        iter(function(v) arr.push(f(v)));
+        var arr:Array<U> = [];
+        @:analyzer(tce_strict)
+        function loop(xs:CList<T>,f:T->U):Void switch xs {
+            case null:
+            case {x:x,xs:xs}:
+                arr.push(f(x));
+                loop(xs,f);
+        }
+        loop(xs,f);
         return fromArray(arr);
     }
     
@@ -75,7 +83,7 @@ class CList<T> {
     }
     
     @:analyzer(tce_local)
-    public function map_reverse_<U>(f:T->U):CList<U> {
+    public function map_reverse<U>(f:T->U):CList<U> {
         @:analyzer(tce_strict)
         function loop(xs:CList<T>,f:T->U,acc:CList<U>) return switch xs {
             case null:        acc;
@@ -84,8 +92,8 @@ class CList<T> {
         }
         return loop(this,f,null); 
     }
-    
-    public function map_reverse<U>(f:T->U):CList<U> return _map_rev(this,f,null);
+    /*
+    public function map_reverse_<U>(f:T->U):CList<U> return _map_rev(this,f,null);
     
     @:analyzer(tce_strict)
     function _map_rev<U>(xs:CList<T>,f:T->U,acc:CList<U>) return switch xs {
@@ -93,6 +101,7 @@ class CList<T> {
         case {x:x,xs:xs}:
             _map_rev( xs, f, acc.cons( f(x) ));
     }
+    */
     
     @:analyzer(tce_local)
     public static function flatten_to_array<T>(xxs:CList<CList<T>>):Array<T> {

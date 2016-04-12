@@ -17,6 +17,20 @@ class Lists {
         var xs = _map_rev(xs,f,Nil);
         return _rev(xs,Nil);
     }
+    
+    @:analyzer(tce_local)
+    public static function map_arr<T,U>(xs:List<T>,f:T->U):List<U>{
+        var arr:Array<U> = [];
+        @:analyzer(tce_strict)
+        function loop(xs:List<T>,f:T->U):Void switch xs {
+            case Nil:
+            case Cons(x,xs):
+                arr.push(f(x));
+                loop(xs,f);
+        }
+        loop(xs,f);
+        return arr.toList();
+    }
 
     public static function cons<T>(xs:List<T>,x:T) return Cons(x,xs);
     
