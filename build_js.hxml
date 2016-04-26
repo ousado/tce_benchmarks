@@ -2,6 +2,7 @@
 -lib thx.culture
 -lib thx.benchmark
 -lib thx.format
+-lib hxnodejs
 -cp src
 -main bench.Macro
 --each
