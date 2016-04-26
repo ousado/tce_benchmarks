@@ -3,9 +3,7 @@
 -lib thx.benchmark
 -lib thx.format
 -cp src
--main bench.Bench
+-main bench.Macro
 --each
 -cp ../thirdparty/hxnodejs/src
--js bench.js
-
-
+-js benchcmp.js

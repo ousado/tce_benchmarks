@@ -1,0 +1,36 @@
+-dce full
+-lib thx.core
+-lib thx.culture
+-lib thx.benchmark
+-lib thx.format
+-cp src
+-main bench.Micro
+--each
+-cp ../thirdparty/hxnodejs/src
+-js micro.js
+-cmd echo "js^"
+--next
+-neko micro.n
+-cmd echo "neko^"
+--next 
+-python micro.py
+-cmd echo "python^"
+--next
+-java javamicro
+-cmd echo "java^"
+--next
+-D erase_generics
+-cs csmicro
+-cmd echo "cs^"
+--next
+-cpp cppmicro
+-cmd echo "cpp^"
+--next
+-cpp micro.cppia
+-D cppia
+--next
+-lua micro.lua
+-cmd echo "lua^"
+--next
+-php phpmicro
+-cmd echo "php^"
